@@ -44,6 +44,10 @@ class GoogleController extends Controller
      */
     public function connectCheckAction(Request $request)
     {
+
+
+        //google_user = new GoogleAuth::getUser();
+
         $client = $this->get('oauth2.registry')
             ->getClient('google');
 
@@ -54,6 +58,8 @@ class GoogleController extends Controller
 
             $e->getMessage();die;
         }
+
+        
 
         $lib_user = $this->em->getRepository('AppBundle:User')
                                  ->findOneBy([

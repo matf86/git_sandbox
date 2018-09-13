@@ -12,9 +12,7 @@ class UserController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AppBundle:User:index.html.twig', array(
-            // ...
-        ));
+        return $this->render('AppBundle:User:index.html.twig');
     }
 
 }
