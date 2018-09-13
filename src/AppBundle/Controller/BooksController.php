@@ -51,7 +51,8 @@ class BooksController extends Controller
      */
     public function issueAction($id, Request $request)
     {
-
+        //todo
+        //issue book by user logic
     }
 
     public function editAction($id, Request $request)
