@@ -22,8 +22,8 @@ class BooksController extends Controller
 
         $pagination = $paginator->paginate(
             $books_list, /* query NOT result */
-            $request->query->getInt('page', 1)/*page number*/,
-            $request->query->getInt('limit', 5)/*limit per page*/
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 5)
         );
 
         return $this->render('book/index.html.twig', [
@@ -44,5 +44,13 @@ class BooksController extends Controller
         return $this->render('book/show.html.twig', [
             'book' => $book
         ]);
+    }
+
+    /**
+     * @Route("/books/issue/{id}", name="show_book")
+     */
+    public function issueAction($id, Request $request)
+    {
+
     }
 }
