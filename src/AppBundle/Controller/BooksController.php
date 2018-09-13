@@ -53,4 +53,9 @@ class BooksController extends Controller
     {
 
     }
+
+    public function editAction($id, Request $request)
+    {
+
+    }
 }
