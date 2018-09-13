@@ -64,4 +64,11 @@ class BooksController extends Controller
     {
 
     }
+
+    public function destroyAction($id, Request $request)
+    {
+
+    }
+
+
 }
