@@ -59,7 +59,7 @@ class GoogleController extends Controller
             $e->getMessage();die;
         }
 
-        
+
 
         $lib_user = $this->em->getRepository('AppBundle:User')
                                  ->findOneBy([
