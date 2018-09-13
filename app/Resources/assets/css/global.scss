@@ -1,0 +1,40 @@
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+
+}
+
+.height-9 {
+  min-height: 90vh;
+}
+
+.height-8 {
+  min-height: 80vh;
+}
+
+//navbar
+
+//.nav-search-form {
+//  width: 300px;
+//}
+
+.dropdown-menu-side {
+  transform: translateX(-50%) !important;
+}
+
+//Login form styles
+
+.login_form {
+  min-width: 250px;
+  max-width: 45%;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.login_form__header {
+  color: #fff;
+  margin-bottom: 25px;
+  padding-top: 10px;
+  background-color: #007bff;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ceffe686-e846-4dac-bbac-edbf7d3a211a" name="kornik_map" url="http://172.17.42.1">
+        <fileTransfer host="172.17.42.1" port="2222" privateKey="$PROJECT_DIR$/laradock_kornik/workspace/insecure_id_rsa" rootFolder="/root" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="2222" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

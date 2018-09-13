@@ -1,0 +1,39 @@
+AppBundle\Entity\Employee:
+    type: entity
+    table: employees
+    repositoryClass: AppBundle\Repository\EmployeeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        secondName:
+            type: string
+            length: 255
+            column: second_name
+        email:
+            type: string
+            length: 255
+            unique: true
+        password:
+            type: string
+            length: 255
+    manyToOne:
+        branch:
+            targetEntity: Branch
+            inversedBy: employees
+            joinColumn:
+                name: branch_id
+                referencedColumnName: id
+        position:
+            targetEntity: Position
+            inversedBy: employees
+            joinColumn:
+                name: position_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

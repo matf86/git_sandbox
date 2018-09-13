@@ -1,0 +1,40 @@
+AppBundle\Entity\Book:
+    type: entity
+    table: books
+    repositoryClass: AppBundle\Repository\BookRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        author:
+            type: string
+            length: 255
+        publishDate:
+            type: date
+            column: publish_date
+        status:
+            type: boolean
+    manyToOne:
+        publisher:
+            targetEntity: AppBundle\Entity\Publisher
+            inversedBy: books
+            joinColumn:
+                name: publisher_id
+                referencedColumnName: id
+        branch:
+            targetEntity: AppBundle\Entity\Branch
+            inversedBy: books
+            joinColumn:
+                name: branch_id
+                referencedColumnName: id
+    oneToMany:
+        issues:
+          targetEntity: AppBundle\Entity\Issue
+          mappedBy: book
+    lifecycleCallbacks: {  }

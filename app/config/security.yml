@@ -1,0 +1,56 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        AppBundle\Entity\Employee: bcrypt
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+            employee_provider:
+                entity:
+                    class: AppBundle:Employee
+                    property: email
+            user_provider:
+                entity:
+                    class: AppBundle:User
+                    property: google_id
+                    # if you're using multiple entity managers
+                    # manager_name: customer
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        user:
+          pattern: ^/profile/
+          logout:
+            path:   /logout
+            target: /login
+          guard:
+            authenticators:
+              - app.security.google_authenticator
+
+        employee:
+          anonymous: ~
+          logout:
+            path:   /dashboard/logout
+            target: /dashboard/login
+          guard:
+            authenticators:
+              - app.security.login_form_authenticator
+#            guard:
+#              authenticators:
+#                - app.security.login_form_authenticator
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
+    access_control:
+            # require ROLE_ADMIN for /*
+            - { path: ^/login/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/dashboard/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/dashboard/*, roles: ROLE_EMPLOYEE }
+            - { path: ^/profile/*, roles: ROLE_USER }

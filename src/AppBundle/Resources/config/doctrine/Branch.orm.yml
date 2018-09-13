@@ -1,0 +1,42 @@
+AppBundle\Entity\Branch:
+    type: entity
+    table: branches
+    repositoryClass: AppBundle\Repository\BranchRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            nullable: true
+        street:
+            type: string
+            length: 255
+            nullable: true
+        city:
+            type: string
+            length: 255
+            nullable: true
+        zip:
+            type: string
+            length: 255
+            nullable: true
+        phone:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+            nullable: true
+    oneToMany:
+        employees:
+            targetEntity: Employee
+            mappedBy: branch
+        books:
+            targetEntity: Book
+            mappedBy: branch
+    lifecycleCallbacks: {  }

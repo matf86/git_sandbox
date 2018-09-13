@@ -1,0 +1,36 @@
+AppBundle\Entity\User:
+    type: entity
+    table: users
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        secondName:
+            type: string
+            length: 255
+            column: second_name
+        email:
+            type: string
+            length: 255
+            unique: true
+        phone:
+            type: string
+            length: 255
+            nullable: true
+        googleId:
+            type: string
+            length: 255
+            unique: true
+            column: google_id
+    oneToMany:
+        issues:
+            targetEntity: AppBundle\Entity\Issue
+            mappedBy: user
+    lifecycleCallbacks: {  }

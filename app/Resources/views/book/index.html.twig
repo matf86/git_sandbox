@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="count">
+        {{ books.getTotalItemCount }}
+    </div>
+
+    {% for book in books %}
+        <div class="card w-75 mb-2 shadow">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text">{{ book.author }}</p>
+                <a href="{{ path('show_book', { 'id': book.id }) }}" class="btn btn-success float-right">More info</a>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="navigation w-50 mr-auto ml-auto">
+        {{ knp_pagination_render(books) }}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

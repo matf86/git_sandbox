@@ -1,0 +1,48 @@
+<?php
+
+namespace AppBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+
+class BooksController extends Controller
+{
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function indexAction(Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $books_list = $entityManager->getRepository('AppBundle:Book')
+            ->findAllDistinct();
+
+        $paginator  = $this->get('knp_paginator');
+
+        $pagination = $paginator->paginate(
+            $books_list, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            $request->query->getInt('limit', 5)/*limit per page*/
+        );
+
+        return $this->render('book/index.html.twig', [
+            'books' => $pagination
+        ]);
+    }
+
+    /**
+     * @Route("/books/{id}", name="show_book")
+     */
+    public function showAction($id, Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $book = $entityManager->getRepository('AppBundle:Book')
+            ->find($id);
+
+        return $this->render('book/show.html.twig', [
+            'book' => $book
+        ]);
+    }
+}

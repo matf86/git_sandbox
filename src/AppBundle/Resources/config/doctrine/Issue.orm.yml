@@ -1,0 +1,32 @@
+AppBundle\Entity\Issue:
+    type: entity
+    table: issues
+    repositoryClass: AppBundle\Repository\IssueRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        startDate:
+            type: datetime
+            column: start_date
+        endDate:
+            type: datetime
+            column: end_date
+        status:
+            type: string
+            length: 255
+    manyToOne:
+        book:
+          targetEntity: Book
+          inversedBy: issues
+          joinColumn:
+            nullable: false
+        user:
+          targetEntity: User
+          inversedBy: issues
+          joinColumn:
+            nullable: false
+    lifecycleCallbacks: {  }
