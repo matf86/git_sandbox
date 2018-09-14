@@ -25,7 +25,6 @@ class ProfileController extends Controller
         $user = $entityManager->getRepository('AppBundle:User')
             ->find($id);
 
-        // replace this example code with whatever you need
         return $this->render('profile/index.html.twig', [
             'user' => $user
         ]);

@@ -45,29 +45,4 @@ class BooksController extends Controller
             'book' => $book
         ]);
     }
-
-    /**
-     * @Route("/books/issue/{id}", name="show_book")
-     */
-    public function issueAction($id, Request $request)
-    {
-
-    }
-
-    public function editAction($id, Request $request)
-    {
-
-    }
-
-    public function updateAction($id, Request $request)
-    {
-
-    }
-
-    public function destroyAction($id, Request $request)
-    {
-
-    }
-
-
 }
